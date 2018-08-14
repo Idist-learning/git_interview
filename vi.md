@@ -8,7 +8,6 @@ Theo khảo sát phát triển Stack Overflow mới nhất, hơn 70% các nhà p
 
 * Một fork là một remote, một bản sao chép của repository trên phía server, nhưng nó lại khác với bản gốc. Một fork không thực sự được coi là khái niệm của git, nó giống như là một ý tưởng về chính trị/xã hội hơn.
 * Một clone thì không phải là một fork, một clone là bản sao chép của một remote repository nào đó. Khi bạn clone, thực ra bạn chỉ sao chép mã nguồn của repository đó, bao gồm tất cả lịch sử và các nhánh.
-* A branch is a mechanism to handle the changes within a single repository in order to eventually merge them with the rest of code. A branch is something that is within a repository. Conceptually, it represents a thread of development.
 * Một nhánh là một cơ chế để xử lý các thay đổi trong một repository duy nhất để cuối cùng merge chúng với phần còn lại của code. Branch là cái gì đó nằm trong một repository. Về mặt khái niệm, nó đại diện cho một luồng phát triển.
 
 ### Q2: Điểm khác biệt giữa một "pull request" và một "branch"?
@@ -22,8 +21,6 @@ Theo khảo sát phát triển Stack Overflow mới nhất, hơn 70% các nhà p
 Nói một cách đơn giản, git pull thực hiện một git fetch và theo sau đó là một git merge.
 
 * Khi bạn sử dụng pull, Git sẽ cố gắng tự động thực hiện công việc cho bạn. Đó là trường hợp khá nhạy cảm, vì vậy Git sẽ hợp nhất bất kỳ pull commit vào nhánh bạn đang làm việc. Pull tự động kết hợp các commit mà không cho bạn xem lại chúng trước. Nếu bạn không quản lý chặt chẽ các branch của mình, bạn có thể thường xuyên gặp phải các xung đột.
-
-* When you fetch, Git gathers any commits from the target branch that do not exist in your current branch and stores them in your local repository. However, it does not merge them with your current branch. This is particularly useful if you need to keep your repository up to date, but are working on something that might break if you update your files. To integrate the commits into your master branch, you use merge.
 
 *Khi bạn fetch, Git thu thập bất kỳ commit nào từ nhánh đích mà không tồn tại trong nhánh hiện tại của bạn và lưu trữ chúng trong local repository của bạn. Tuy nhiên, nó không merge chúng với branch hiện tại của bạn. Điều này đặc biệt hữu ích nếu bạn cần cập nhật repository của bạn, nhưng khi đang làm việc trên thứ gì đó, nó có thể bị lỗi nếu bạn cập nhật các file của mình. Để tích hợp các commit vào nhánh chính của bạn, bạn sử dụng merge.
 
@@ -63,7 +60,6 @@ git reset --soft HEAD~1
 
 ### Q5: "git cherry-pick" là gì?
 
-The command git cherry-pick is typically used to  particular commits from one branch within a repository onto a different branch. A common use is to forward- or back-port commits from a maintenance branch to a development branch.
 Lệnh git cherry-pick thường được sử dụng để đưa vào các commit cụ thể từ một nhánh trong một repository trên một branch khác. Việc sử dụng phổ biến là chuyển tiếp hoặc vá lại các commit từ maintenance branch bảo trì đến development branch.
 
 Điều này ngược lại với các cách khác như merge và rebase mà thường áp dụng nhiều commit vào một nhánh khác.
@@ -101,10 +97,8 @@ Gitflow workflow employs two parallel long-running branches to record the histor
 
 ![](https://res.cloudinary.com/practicaldev/image/fetch/s--pLQxGakq--/c_limit%2Cf_auto%2Cfl_progressive%2Cq_auto%2Cw_880/https://wac-cdn.atlassian.com/dam/jcr:61ccc620-5249-4338-be66-94d563f2843c/05%2520%282%29.svg%3FcdnVersion%3Dji)
 
-### Q9: When should I use "git stash"?
 ### Q9: Khi nào thì ta nên sử dụng "git stash"?
 
-The `git stash` command takes your uncommitted changes (both staged and unstaged), saves them away for later use, and then reverts them from your working copy.
 Lệnh `git stash` lấy các thay đổi chưa được commit của bạn (trong cả staged và unstaged), lưu chúng lại để sau này sử dụng, sau đó revert chúng tại phiên bản working của bạn.
 Xem qua:
 
