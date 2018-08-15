@@ -2,11 +2,11 @@
 
 ## 11 câu hỏi phỏng vấn về Git khiến bạn phải khóc thét
 
-Theo khảo sát phát triển Stack Overflow mới nhất, hơn 70% các nhà phát triển sử dụng Git, biến nó trở thành VCS được sử dụng nhiều nhất trên thế giới. Git thường được sử dụng cho cả phát triển phần mềm thương mại và nguồn mở, với những lợi ích đáng kể cho các cá nhân, nhóm và doanh nghiệp.
+Theo khảo sát mới nhất của developer Stack Overflow, hơn 70% các nhà phát triển sử dụng Git, biến nó trở thành VCS được sử dụng nhiều nhất trên thế giới. Git thường được sử dụng cho cả phát triển phần mềm thương mại và mã nguồn mở, với những lợi ích đáng kể cho các cá nhân, nhóm và doanh nghiệp.
 
 ### Q1: Git fork là gì? sự khác biệt giữa fork, branch và clone?
 
-* Một fork là một remote, một bản sao chép của repository trên phía server, nhưng nó lại khác với bản gốc. Một fork không thực sự được coi là khái niệm của git, nó giống như là một ý tưởng về chính trị/xã hội hơn.
+* Một fork là một bản sao remote, phía server của 1 repo, nhưng nó lại khác với bản gốc. Một fork không thực sự được coi là khái niệm của git, nó giống như là một ý tưởng về chính trị/xã hội hơn.
 * Một clone thì không phải là một fork, một clone là bản sao chép của một remote repository nào đó. Khi bạn clone, thực ra bạn chỉ sao chép mã nguồn của repository đó, bao gồm tất cả lịch sử và các nhánh.
 * Một nhánh là một cơ chế để xử lý các thay đổi trong một repository duy nhất để cuối cùng merge chúng với phần còn lại của code. Branch là cái gì đó nằm trong một repository. Về mặt khái niệm, nó đại diện cho một luồng phát triển.
 
@@ -85,11 +85,10 @@ Khi các nhà phát triển sẵn sàng xuất bản một local commit, họ pu
 
 ### Q8: Bạn có thể giải thích về Gitflow Worrkflow được không?
 
-Gitflow workflow employs two parallel long-running branches to record the history of the project, master and develop:
- Gitflow workflow sử dụng hai nhánh chạy song song để ghi lại lịch sử của dự án, là master và develop:
+ Gitflow workflow sử dụng hai nhánh chạy song song dài hạn để ghi lại lịch sử của dự án, là master và develop:
 * Master - luôn sẵn sàng để được phát hành trên LIVE, với mọi thứ đã được kiểm tra và phê duyệt đầy đủ (production ready).
 
-  * Hotfix - Các nhánh bảo trì hoặc “hotfix” được sử dụng để nhanh chóng vá các bản phát hành sản phẩm. Các nhánh Hotfix rất giống các nhánh release và các nhánh tính năng trừ khi chúng dựa trên master thay vì develop.
+  * Hotfix - Các nhánh bảo trì hoặc “hotfix” được sử dụng để nhanh chóng vá các bản phát hành production. Các nhánh Hotfix rất giống các nhánh release và các nhánh tính năng trừ khi chúng dựa trên master thay vì develop.
 
 * Develop - là nhánh mà tất cả các nhánh tính năng được merge vào và nơi tất cả các kiểm nghiệm được thực hiện. Chỉ khi mọi thứ được kiểm tra kỹ lưỡng và sửa chữa thì nó có thể được merge vào nhánh master.
 
@@ -138,8 +137,7 @@ $ git stash pop
 
 ### Q10: Làm sao để xoá một file từ git mà không xoá file đó trên hệ thống file của bạn?
 
-If you are not careful during a git add, you may end up adding files that you didn’t want to commit. However, git rm will remove it from both your staging area (index), as well as your file system (working tree), which may not be what you want.
-Nếu bạn không cẩn thận trong khi thêm git, bạn có thể sẽ thêm các tệp mà bạn không muốn commit. Tuy nhiên, `git rm` sẽ xóa nó khỏi cả phân vùng stage (index) của bạn, cũng như hệ thống file của bạn (working tree), có thể không phải là thứ bạn muốn.
+Nếu bạn không cẩn thận trong khi sử dụng `git add`, bạn có thể sẽ thêm các tệp mà bạn không muốn commit. Tuy nhiên, `git rm` sẽ xóa nó khỏi cả phân vùng stage (index) của bạn, cũng như hệ thống file của bạn (working tree), có thể không phải là thứ bạn muốn.
 
 thay vào đó hãy sử dụng ``git reset``:
 
