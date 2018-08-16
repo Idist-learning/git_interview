@@ -20,7 +20,7 @@ Theo khảo sát phát triển Stack Overflow mới nhất, hơn 70% các nhà p
 
 Nói một cách đơn giản, git pull thực hiện một git fetch và theo sau đó là một git merge.
 
-* Khi bạn sử dụng pull, Git sẽ cố gắng tự động thực hiện công việc cho bạn. Đó là trường hợp khá nhạy cảm, vì vậy Git sẽ hợp nhất bất kỳ pull commit vào nhánh bạn đang làm việc. Pull tự động kết hợp các commit mà không cho bạn xem lại chúng trước. Nếu bạn không quản lý chặt chẽ các branch của mình, bạn có thể thường xuyên gặp phải các xung đột.
+* Khi bạn sử dụng pull, Git sẽ cố gắng tự động thực hiện công việc cho bạn. Đó là trường hợp khá nhạy cảm, vì vậy Git sẽ hợp nhất bất kỳ pull commit vào nhánh bạn đang làm việc. Pull tự động kết hợp các commit mà không cho bạn xem xét chúng trước. Nếu bạn không quản lý chặt chẽ các branch của mình, bạn có thể thường xuyên gặp phải các xung đột.
 
 *Khi bạn fetch, Git thu thập bất kỳ commit nào từ nhánh đích mà không tồn tại trong nhánh hiện tại của bạn và lưu trữ chúng trong local repository của bạn. Tuy nhiên, nó không merge chúng với branch hiện tại của bạn. Điều này đặc biệt hữu ích nếu bạn cần cập nhật repository của bạn, nhưng khi đang làm việc trên thứ gì đó, nó có thể bị lỗi nếu bạn cập nhật các file của mình. Để tích hợp các commit vào nhánh chính của bạn, bạn sử dụng merge.
 
@@ -60,7 +60,7 @@ git reset --soft HEAD~1
 
 ### Q5: "git cherry-pick" là gì?
 
-Lệnh git cherry-pick thường được sử dụng để đưa vào các commit cụ thể từ một nhánh trong một repository trên một branch khác. Việc sử dụng phổ biến là chuyển tiếp hoặc vá lại các commit từ maintenance branch bảo trì đến development branch.
+Lệnh git cherry-pick thường được sử dụng để đưa vào các commit cụ thể từ một nhánh trong một repository trên một branch khác. Việc sử dụng phổ biến là chuyển tiếp hoặc vá lại các commit từ nhánh bảo trì đến development branch.
 
 Điều này ngược lại với các cách khác như merge và rebase mà thường áp dụng nhiều commit vào một nhánh khác.
 Chú ý:
@@ -85,11 +85,10 @@ Khi các nhà phát triển sẵn sàng xuất bản một local commit, họ pu
 
 ### Q8: Bạn có thể giải thích về Gitflow Worrkflow được không?
 
-Gitflow workflow employs two parallel long-running branches to record the history of the project, master and develop:
- Gitflow workflow sử dụng hai nhánh chạy song song để ghi lại lịch sử của dự án, là master và develop:
+ Gitflow workflow sử dụng hai nhánh _long-running_ chạy song song để ghi lại lịch sử của dự án, là master và develop:
 * Master - luôn sẵn sàng để được phát hành trên LIVE, với mọi thứ đã được kiểm tra và phê duyệt đầy đủ (production ready).
 
-  * Hotfix - Các nhánh bảo trì hoặc “hotfix” được sử dụng để nhanh chóng vá các bản phát hành sản phẩm. Các nhánh Hotfix rất giống các nhánh release và các nhánh tính năng trừ khi chúng dựa trên master thay vì develop.
+  * Hotfix - Các nhánh bảo trì hoặc “hotfix” được sử dụng để nhanh chóng vá các bản phát hành sản phẩm. Các nhánh Hotfix rất giống các nhánh release và các nhánh tính năng ngoại trừ việc chúng dựa trên master thay vì develop.
 
 * Develop - là nhánh mà tất cả các nhánh tính năng được merge vào và nơi tất cả các kiểm nghiệm được thực hiện. Chỉ khi mọi thứ được kiểm tra kỹ lưỡng và sửa chữa thì nó có thể được merge vào nhánh master.
 
@@ -99,7 +98,7 @@ Gitflow workflow employs two parallel long-running branches to record the histor
 
 ### Q9: Khi nào thì ta nên sử dụng "git stash"?
 
-Lệnh `git stash` lấy các thay đổi chưa được commit của bạn (trong cả staged và unstaged), lưu chúng lại để sau này sử dụng, sau đó revert chúng tại phiên bản working của bạn.
+Lệnh `git stash` lấy các thay đổi chưa được commit của bạn (cả staged và unstaged), lưu chúng lại để sau này sử dụng, sau đó revert chúng tại phiên bản working của bạn.
 Xem qua:
 
 ```
@@ -138,8 +137,7 @@ $ git stash pop
 
 ### Q10: Làm sao để xoá một file từ git mà không xoá file đó trên hệ thống file của bạn?
 
-If you are not careful during a git add, you may end up adding files that you didn’t want to commit. However, git rm will remove it from both your staging area (index), as well as your file system (working tree), which may not be what you want.
-Nếu bạn không cẩn thận trong khi thêm git, bạn có thể sẽ thêm các tệp mà bạn không muốn commit. Tuy nhiên, `git rm` sẽ xóa nó khỏi cả phân vùng stage (index) của bạn, cũng như hệ thống file của bạn (working tree), có thể không phải là thứ bạn muốn.
+Nếu bạn không cẩn thận trong khi sử dụng `git add`, bạn có thể sẽ thêm các tệp mà bạn không muốn commit. Tuy nhiên, `git rm` sẽ xóa nó khỏi cả phân vùng stage (index) của bạn, cũng như hệ thống file của bạn (working tree), có thể không phải là thứ bạn muốn.
 
 thay vào đó hãy sử dụng ``git reset``:
 
